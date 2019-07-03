@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            position: relative;
+            width: 50%;
+        }
+
+        .image {
+            display: block;
+            width: 125%;
+            height: auto;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 125%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #424242;
+        }
+
+        .container:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .search {
+            width: 8em;
+            height: 2em;
+        }
+
+        .centered {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+        }
+
+        .submit {
+            position: absolute;
+            top: 640px;
+            left: 232px;
+            width: 33.33%;
+            z-index: 2;
+        }
+
+        .submit_orc {
+            position: absolute;
+            top: 630px;
+            left: 950px;
+            width: 33.33%;
+            z-index: 2;
+        }
+
+        .img-warrior {
+            position: absolute;
+            top: 200px;
+            left: 150px;
+            width: 33.33%;
+            z-index: 2;
+        }
+
+        .img-orc {
+            position: absolute;
+            top: 200px;
+            right: 15px;
+            width: 36%;
+            z-index: 2;
+        }
+
+        .body {
+            display: grid;
+            height: 100%;
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<div class="centered">
+    <br />
+    <h1>Choose your hero!</h1>
+    <br />
+</div>
+
+<div class="body">
+    <img src="Arena.jpg" alt="Italy">
+</div>
+
+<div class="img-orc">
+    <div class="container">
+        <img src="orc_barb.jpg" class="image">
+        <div class="overlay">
+            <div class="text">Orcs are fierce and unstoppable fighters!
+                <br /> They have a larger health pool.</div>
+        </div>
+    </div>
+</div>
+
+<div class="img-warrior">
+    <div class="container">
+        <img src="medieval_warrior.jpg" class="image">
+        <div class="overlay">
+            <div class="text">Warriors are smart and fast fighters!
+                <br /> They have more stamina.</div>
+        </div>
+    </div>
+</div>
+
+<form action="index.php" method="POST">
+    <div class="submit">
+        <input class="search" name="forPeople" type="submit" value="For the people!">
+    </div>
+    <div class="submit_orc">
+        <input class="search" name="forHorde" type="submit" value="For the horde!">
+    </div>
+
+</form>
+</body>
+
+</html>
