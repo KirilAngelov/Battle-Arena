@@ -1,7 +1,7 @@
 <?php
-// Singleton to connect db.
+
 class ConnectDb {
-    // Hold the class instance.
+
     private static $instance = null;
     private $conn;
 
@@ -9,11 +9,11 @@ class ConnectDb {
     private $user = 'root';
     private $pass = '';
     private $name = 'battle-arena';
+
     private function __construct()
     {
-        $this->conn = new PDO("mysql:host={$this->host};
-    dbname={$this->name}", $this->user,$this->pass,
-            array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+        $this->conn = new PDO("mysql:host={$this->host}; dbname={$this->name}", $this->user, $this->pass,
+        [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"]);
     }
 
     public static function getInstance()
