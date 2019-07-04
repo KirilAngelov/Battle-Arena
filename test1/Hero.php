@@ -41,7 +41,7 @@ class Hero
     }
     public function displayWarrior2()
     {
-?>
+        ?>
         <form action="warrior_stage2.html" method="POST">
     <div class="submit">
         <input class="search" name="forPeople" type="submit" value="For the people!">

@@ -13,23 +13,21 @@ echo '
     <br /><h1>Welcome to the arena!</h1><br />
     <br /><p>Let the battles begin!</p><br />
 ';
-/*include 'ConnectDb.php';
 
-$str = "SELECT * FROM heroes";
-try{
-    $connection = ConnectDb::getInstance()->getConnection();
-    $stm = $connection->prepare($str);
-    $stm->execute();
-    var_dump($stm->fetch(PDO::FETCH_ASSOC));
+require_once "Battlefield.php";
+include'Commands.php';
+require_once 'ConnectDb.php';
+require_once 'Hero.php';
+/*
+$coms= new Commands();
 
-}
-catch (PDOException $exception)
-{
-    echo "Connection failed".$exception->getMessage();
-}
-*/
+$coms->showHealth('Patrick');
+echo '<br/>';
+$coms->setStamina('Patrick',50);
+echo '<br/>';
+$coms->showStamina('Patrick');
 
-include "Battlefield.php";
+die();*/
 $start= new Battlefield();
 
 
