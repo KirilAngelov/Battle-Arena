@@ -2,8 +2,12 @@
 <html lang="en">
 <style>
 
-    body {
-        background-image: url("emperor_army2.jpg");
+    html {
+        background: url(orc_tunnel.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
     div.transbox {
         position: relative;
@@ -13,7 +17,7 @@
         background-color: #ffffff;
         border: 1px solid black;
         opacity: 0.6;
-        width: 60%;
+        width: 50%;
         filter: alpha(opacity=60);
         text-align: center;
     }
@@ -33,15 +37,18 @@
 
 </head>
 <div class="centered">
-    <h2> HALT! </h2><br />
+    <h2> BEWARE! </h2><br />
 </div>
 <body>
 
 
 <div class="transbox">
 
-    <p>You have encountered the imperial army!</p><br />
 
+    <p>The cave you found is the hideout of a tribe!</p><br />
+
+
+    <!-- Change the text, but for now it is this. -->
     Emperor - A great victory was won today! That victory is not yours,but it can be.<br />
 
     Aragorn - Soldiers won the battle. Perhaps the Emperor was too far behind to see.<br />
@@ -50,7 +57,15 @@
     the gates of Athens. This is your last chance to join me!<br />
 
 
+    //change so that it goes to the orc battle
+    //change should be in the Battles class
+    <form action="../orcBattle.php" method="POST">
+        <div class="submit">
+            <input class="search" name="forHorde" type="submit" value="Battle!">
+        </div>
+    </form>
 </div>
+
 
 </body>
 </html>

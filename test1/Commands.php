@@ -29,6 +29,7 @@ class Commands
 
     }
 
+
     function showHealth($name)
     {
         $str ='SELECT Health FROM heroes WHERE Name=:name';

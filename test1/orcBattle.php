@@ -4,13 +4,13 @@ echo '
 <html>
 <head>
 
-    <link rel="stylesheet" href="CSS/Styles.css">
+    <link rel="stylesheet" href="CSS/OrcStage.css">
 
 </head>
 <body>
 
 <div class="transbox">
-    <br /><h1>Welcome to the arena!</h1><br />
+    <br /><h1>Beware!</h1><br />
     <br /><p>Let the battles begin!</p><br />
 ';
 
@@ -19,36 +19,9 @@ include 'Commands.php';
 require_once 'ConnectDb.php';
 require_once 'Hero.php';
 require_once "Battles.php";
-
-
-/*
-$coms= new Commands();
-
-$coms->showHealth('Patrick');
-echo '<br/>';
-$coms->setStamina('Patrick',50);
-echo '<br/>';
-$coms->showStamina('Patrick');
-
-die();*/
-
-
-
-
-
-
-
-
-
+$battle= new Battles();
 
 echo '</div>
 </body>
 
 ';
-
-
-
-
-
-
-

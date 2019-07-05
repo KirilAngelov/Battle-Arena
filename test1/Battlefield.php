@@ -1,16 +1,19 @@
 
 <?php
 include "Hero.php";
-
+include "Scenes.php";
 
 class Battlefield
 {
-    private $warriorDamage = 20;
+    private $warriorDamage = 30;
     private $orcDamage = 35;
     private $staminaCost = 10;
     private $enemyDamage=20;
+    private $xpFromBattle=50;
+    private $scenes;
     public function __construct()
     {
+        $this->scenes= new Scenes();
     }
 
     public function Battle(Hero $hero1, Hero $hero2)
@@ -25,12 +28,10 @@ class Battlefield
                 if (! empty($_POST['forPeople'])) {
                     $hero1->attack($hero2, $this->warriorDamage);
                     $hero1->setStamina($hero1->getStamina() - $this->staminaCost);
-
                     if($hero2->getHealth() <= 0)
                     {
                         echo "{$hero1->getName()} attacked {$hero2->getName()} for {$this->warriorDamage} points of damage and killed him!<br />";
-                        $hero1->winner();
-                        $hero1->displayWarrior2();
+                        $hero1->winner($this->xpFromBattle);
 
                         return;
                     }
@@ -48,7 +49,8 @@ class Battlefield
                     if($hero2->getHealth() <= 0)
                     {
                         echo "{$hero1->getName()} attacked {$hero2->getName()} for {$this->orcDamage} points of damage and killed him!<br />";
-                        $hero1->winner();
+                        $hero1->winner($this->xpFromBattle);
+
                         return;
                     }
                     echo "{$hero1->getName()} attacked {$hero2->getName()} and dealt {$this->orcDamage} point of damage.<br />";

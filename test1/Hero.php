@@ -7,7 +7,10 @@ class Hero
     protected $health;
     protected $stamina;
     public $tired = false;
+    private $xp;
+    private $xpCap = 100;
 
+    //find hero by id and then map fields to parameters
     public function __construct($name, $health, $stamina)
     {
 
@@ -24,9 +27,26 @@ class Hero
         }
     }
 
-    function winner()
+    function winner($xp)
     {
-      echo "{$this->name} won the battle with {$this->health} health and {$this->stamina} stamina left.";
+      echo "{$this->name} won the battle with {$this->health} health and {$this->stamina} stamina left.<br />";
+      $this->xp = $this->xp + $xp;
+      echo "{$this->name} wins {$xp} experience points! Total: {$this->xp}";
+      $this->levelUp();
+    }
+
+    function levelUp()
+    {
+        if($this->xp >= $this->xpCap)
+        {
+            $this->xp=0;
+            $this->health = $this->health + 15;
+            $this->stamina = $this->stamina + 10;
+
+                echo "{$this->name} levelled up!<br />";
+                echo "New stats: {$this->health} health {$this->stamina} stamina.";
+
+        }
     }
 
 
@@ -39,16 +59,7 @@ class Hero
         }
 
     }
-    public function displayWarrior2()
-    {
-        ?>
-        <form action="warrior_stage2.html" method="POST">
-    <div class="submit">
-        <input class="search" name="forPeople" type="submit" value="For the people!">
-    </div>
-        </form>
-        <?php
-    }
+
 
     public function getHealth()
     {
