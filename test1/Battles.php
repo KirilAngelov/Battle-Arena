@@ -1,9 +1,10 @@
 <?php
 
+
 include_once "Battlefield.php";
 include_once "Hero.php";
 include_once "Scenes.php";
-
+include_once "Commands.php";
 class Battles
 {
 
@@ -11,12 +12,17 @@ class Battles
     private $hero1;
     private $hero2;
     private $hero3;
+    private $hero4;
     private $scene;
     public function __construct()
     {
-        $this->hero1 = new Hero("Aragorn",70,60);
-        $this->hero2 = new Hero("Orc",90,30);
-        $this->hero3 = new Hero("General",80,10);
+
+
+        //It will be better to call the Hero __construct and search by ID.
+        $this->hero1 = new Hero(1);
+        $this->hero2 = new Hero(2);
+        $this->hero3 = new Hero(3);
+        $this->hero4= new Hero(4);
         $this->bf = new Battlefield();
         $this->scene = new Scenes();
         $this->check();
@@ -24,7 +30,7 @@ class Battles
 
     public function check()
     {
-        //For now heroes are hard coded and we can't use the database properly.
+
         //The plan is to use the database because we will use different heroes
         //for different requests. Example when the request is 'Battle' we call
         //Hero1 vs Hero3. When the request is 'forPeople' it is Hero1 vs Hero2.
@@ -33,11 +39,14 @@ class Battles
         {
 
             $this->bf->Battle($this->hero1, $this->hero3);
+            $this->scene->displayShop();
 
         }
         elseif (isset($_POST['forHorde']) && $_POST['forHorde'] == 'Battle!') {
 
-            $this->bf->Battle($this->hero2, $this->hero3);
+            //add hero4 to DB and replace here
+            $this->bf->Battle($this->hero2, $this->hero4);
+            $this->scene->displayShop();
 
 
         }
@@ -54,12 +63,6 @@ class Battles
             $this->scene->displayOrc2();
 
         }
-
-        else
-            {
-             echo 'Battle2';
-            }
-
     }
 
 }

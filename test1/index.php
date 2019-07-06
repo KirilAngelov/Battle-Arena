@@ -15,22 +15,22 @@ echo '
 ';
 
 require_once "Battlefield.php";
-include 'Commands.php';
+require_once 'Commands.php';
 require_once 'ConnectDb.php';
 require_once 'Hero.php';
 require_once "Battles.php";
 
 
-/*
+
 $coms= new Commands();
+$result=$coms->getById(2);
+print_r($result);
+$coms->defaultStats();
+$coms->showHealth("Orc");
+$coms->showStamina("Orc");
+$coms->showXp("Orc");
 
-$coms->showHealth('Patrick');
-echo '<br/>';
-$coms->setStamina('Patrick',50);
-echo '<br/>';
-$coms->showStamina('Patrick');
-
-die();*/
+die();
 
 
 

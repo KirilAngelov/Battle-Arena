@@ -30,9 +30,9 @@ class Scenes
         <?php
     }
 
-    public function displayWarrior3()
+    public function displayShop()
     {
-        //change action to display new page
+        //change action to display shop page
         ?>
         <form action="HTML Pages/warrior_stage2.html" method="POST">
             <div class="submit">

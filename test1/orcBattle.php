@@ -15,11 +15,13 @@ echo '
 ';
 
 require_once "Battlefield.php";
-include 'Commands.php';
+require_once 'Commands.php';
 require_once 'ConnectDb.php';
 require_once 'Hero.php';
 require_once "Battles.php";
 $battle= new Battles();
+
+
 
 echo '</div>
 </body>

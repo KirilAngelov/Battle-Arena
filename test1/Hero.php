@@ -1,5 +1,5 @@
 <?php
-
+require_once "Commands.php";
 
 class Hero
 {
@@ -11,12 +11,16 @@ class Hero
     private $xpCap = 100;
 
     //find hero by id and then map fields to parameters
-    public function __construct($name, $health, $stamina)
+    public function __construct($id)
     {
 
-        $this->name = $name;
-        $this->health = $health;
-        $this->stamina = $stamina;
+        $commands = new Commands();
+        $result = $commands->getById($id);
+
+        $this->name = $result['name'];
+        $this->health = $result['health'];
+        $this->stamina = $result['stamina'];
+        $this->xp = $result['xp'];
     }
 
     function attack(Hero $enemy, $damage)
@@ -31,7 +35,7 @@ class Hero
     {
       echo "{$this->name} won the battle with {$this->health} health and {$this->stamina} stamina left.<br />";
       $this->xp = $this->xp + $xp;
-      echo "{$this->name} wins {$xp} experience points! Total: {$this->xp}";
+      echo "{$this->name} wins {$xp} experience points! Total: {$this->xp} <br />";
       $this->levelUp();
     }
 
@@ -39,12 +43,13 @@ class Hero
     {
         if($this->xp >= $this->xpCap)
         {
-            $this->xp=0;
+
             $this->health = $this->health + 15;
             $this->stamina = $this->stamina + 10;
 
                 echo "{$this->name} levelled up!<br />";
                 echo "New stats: {$this->health} health {$this->stamina} stamina.";
+                $this->xp=0;
 
         }
     }
