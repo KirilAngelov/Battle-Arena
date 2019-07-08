@@ -4,7 +4,7 @@ echo '
 <html>
 <head>
 
-    <link rel="stylesheet" href="CSS/Styles.css">
+    <link rel="stylesheet" href="CSS/ArenaStage.css">
 
 </head>
 <body>
@@ -21,7 +21,8 @@ require_once 'ConnectDb.php';
 require_once 'Hero.php';
 require_once "Battles.php";
 
-
+$coms = new Commands("characters");
+$coms->defaultStatsDB();
 $battle= new Battles();
 
 echo '</div>

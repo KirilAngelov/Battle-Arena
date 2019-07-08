@@ -10,7 +10,7 @@ class ConnectDb {
     private $pass = '';
     private $name = 'battle-arena';
 
-    private function __construct()
+    public function __construct()
     {
         $this->conn = new PDO("mysql:host={$this->host}; dbname={$this->name}", $this->user, $this->pass,
             [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"]);

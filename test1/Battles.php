@@ -25,7 +25,9 @@ class Battles
         $this->hero4= new Hero(4);
         $this->bf = new Battlefield();
         $this->scene = new Scenes();
+
         $this->check();
+
     }
 
     public function check()
@@ -51,7 +53,6 @@ class Battles
 
         }
         elseif (! empty($_POST['forPeople'])) {
-
 
             $this->bf->Battle($this->hero1, $this->hero2);
             $this->scene->displayWarrior2();

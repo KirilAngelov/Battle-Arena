@@ -18,17 +18,25 @@ class Battlefield
 
     public function Battle(Hero $hero1, Hero $hero2)
     {
+
+        $var1 = $hero1->getName();
+        $var2 = $hero2->getName();
         $turn = 0;
-        while(($hero1->getHealth() > 0) && $hero2->getHealth() > 0)
+
+        echo "<br />";
+        while($hero1->showHealth("$var1")>0 && $hero2->showHealth($var2) > 0)
         {
+
             //The idea is to switch turn as heroes attack.
-            if($turn%2 == 0 && $hero1->getStamina() >= $this->staminaCost )
+            if($turn%2 == 0 && $hero1->showStamina($var1) >= $this->staminaCost )
             {
                 //Here we check if the player chose the human or orc character.
                 if (! empty($_POST['forPeople'])) {
                     $hero1->attack($hero2, $this->warriorDamage);
-                    $hero1->setStamina($hero1->getStamina() - $this->staminaCost);
-                    if($hero2->getHealth() <= 0)
+
+                    $stamina = $hero1->showStamina($var1) - $this->staminaCost;
+                    $hero1->setStaminaDB($var1,$stamina);
+                    if($hero2->showHealth($var2) <= 0)
                     {
                         echo "{$hero1->getName()} attacked {$hero2->getName()} for {$this->warriorDamage} points of damage and killed him!<br />";
                         $hero1->winner($this->xpFromBattle);
@@ -36,7 +44,7 @@ class Battlefield
                         return;
                     }
                     echo "{$hero1->getName()} attacked {$hero2->getName()} and dealt {$this->warriorDamage} point of damage.<br />";
-                    echo "{$hero2->getName()} has {$hero2->getHealth()} health and {$hero2->getStamina()} stamina points left.<br />";
+                    echo "{$hero2->getName()} has {$hero2->showHealth($var2)} health and {$hero2->showStamina($var2)} stamina points left.<br />";
                     $turn++;
                     echo "<mark class='red'>Now it's {$hero2->getName()}'s turn!<br /></mark>";
                 }
@@ -44,9 +52,9 @@ class Battlefield
                 if(! empty($_POST['forHorde']))
                 {
                     $hero1->attack($hero2, $this->orcDamage);
-                    $hero1->setStamina($hero1->getStamina() - $this->staminaCost);
-
-                    if($hero2->getHealth() <= 0)
+                    $stamina = $hero1->showStamina($var1) - $this->staminaCost;
+                    $hero1->setStaminaDB($var1,$stamina);
+                    if($hero2->showHealth($var2) <= 0)
                     {
                         echo "{$hero1->getName()} attacked {$hero2->getName()} for {$this->orcDamage} points of damage and killed him!<br />";
                         $hero1->winner($this->xpFromBattle);
@@ -54,7 +62,7 @@ class Battlefield
                         return;
                     }
                     echo "{$hero1->getName()} attacked {$hero2->getName()} and dealt {$this->orcDamage} point of damage.<br />";
-                    echo "{$hero2->getName()} has {$hero2->getHealth()} health and {$hero2->getStamina()} stamina points left.<br />";
+                    echo "{$hero2->getName()} has {$hero2->showHealth($var2)} health and {$hero2->showStamina($var2)} stamina points left.<br />";
                     $turn++;
                     echo "<mark class='red'>Now it's {$hero2->getName()}'s turn!<br /></mark>";
                 }
@@ -63,27 +71,28 @@ class Battlefield
             else
             {
                 $hero1->isTired();
-                $hero1->setStamina($hero1->getStamina() + $this->staminaCost);
+                $hero1->setStaminaDB($var1 , 10);
                 $turn++;
             }
 
             //Here is the enemy that attacks us on every odd turn.
-            if($turn%2!=0 && $hero2->getStamina() >= $this->staminaCost)
+            if($turn%2!=0 && $hero2->showStamina($var2) >= $this->staminaCost)
             {
 
                 $hero2->attack($hero1, $this->enemyDamage);
                 $hero2->setStamina($hero2->getStamina() - $this->staminaCost);
 
-                if($hero1->getHealth()<=0)
+                if($hero1->showHealth($var1)<=0)
                 {
                     echo "{$hero2->getName()} attacked {$hero1->getName()} for {$this->enemyDamage} points of damage and killed him!<br />";
 
                     return;
                 }
                 echo "{$hero2->getName()} attacked {$hero1->getName()} and dealt {$this->enemyDamage} point of damage.<br />";
-                echo "{$hero1->getName()} has {$hero1->getHealth()} health and {$hero1->getStamina()} stamina points left.<br />";
+                echo "{$hero1->getName()} has {$hero1->showHealth($var1)} health and {$hero1->showStamina($var1)} stamina points left.<br />";
                 $turn++;
                 echo "<mark class='blue'>Now it's {$hero1->getName()}'s turn!<br /></mark>";
+
             }
             else
             {
@@ -93,6 +102,7 @@ class Battlefield
             }
 
         }
+
     }
 }
 

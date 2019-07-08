@@ -4,7 +4,7 @@ echo '
 <html>
 <head>
 
-    <link rel="stylesheet" href="CSS/Styles.css">
+    <link rel="stylesheet" href="CSS/ArenaStage.css">
 
 </head>
 <body>
@@ -22,13 +22,18 @@ require_once "Battles.php";
 
 
 
-$coms= new Commands();
-$result=$coms->getById(2);
+$coms = new Commands('characters');
+var_dump("text");
+$result=$coms->getByPrimaryKey(2);
 print_r($result);
-$coms->defaultStats();
-$coms->showHealth("Orc");
-$coms->showStamina("Orc");
-$coms->showXp("Orc");
+echo "<br />";
+$coms->defaultStatsDB();
+echo "<br />";
+echo $coms->showName(2);
+echo "<br />";
+echo $coms->showHealth("Orc");
+
+
 
 die();
 

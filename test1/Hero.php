@@ -1,7 +1,7 @@
 <?php
 require_once "Commands.php";
 
-class Hero
+class Hero extends Commands
 {
     protected $name;
     protected $health;
@@ -10,30 +10,32 @@ class Hero
     private $xp;
     private $xpCap = 100;
 
+
     //find hero by id and then map fields to parameters
     public function __construct($id)
     {
 
-        $commands = new Commands();
-        $result = $commands->getById($id);
-
+        parent::__construct('characters');
+        $result = $this->getByPrimaryKey($id);
         $this->name = $result['name'];
         $this->health = $result['health'];
         $this->stamina = $result['stamina'];
         $this->xp = $result['xp'];
     }
 
+
     function attack(Hero $enemy, $damage)
     {
         if ($enemy->getHealth() > 0) {
-            $enemy->health = $enemy->health - $damage;
+            $newHeatlth = ($enemy->showHealth($enemy->name)-$damage);
+            $this->setHealthDB($enemy->getName(),$newHeatlth);
 
         }
     }
 
     function winner($xp)
     {
-      echo "{$this->name} won the battle with {$this->health} health and {$this->stamina} stamina left.<br />";
+      echo "{$this->name} won the battle with {$this->showHealth($this->name)} health and {$this->showStamina($this->name)} stamina left.<br />";
       $this->xp = $this->xp + $xp;
       echo "{$this->name} wins {$xp} experience points! Total: {$this->xp} <br />";
       $this->levelUp();
@@ -57,7 +59,7 @@ class Hero
 
     public function isTired()
     {
-        if ($this->stamina < 10) {
+        if ($this->showStamina($this->name) < 10) {
             $tired = true;
             echo "{$this->getName()} is tired and skips a turn to recover!<br />";
 
@@ -68,6 +70,7 @@ class Hero
 
     public function getHealth()
     {
+
         return $this->health;
     }
 
