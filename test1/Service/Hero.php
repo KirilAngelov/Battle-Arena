@@ -1,13 +1,12 @@
 <?php
-require_once "Commands.php";
-
-class Hero extends Commands
+class Hero extends HeroRepository
 {
     protected $name;
     protected $health;
     protected $stamina;
     public $tired = false;
     private $xp;
+    private $damage;
     private $xpCap = 100;
 
 
@@ -21,13 +20,14 @@ class Hero extends Commands
         $this->health = $result['health'];
         $this->stamina = $result['stamina'];
         $this->xp = $result['xp'];
+        $this->damage = $result['damage'];
     }
 
 
     function attack(Hero $enemy, $damage)
     {
         if ($enemy->getHealth() > 0) {
-            $newHeatlth = ($enemy->showHealth($enemy->name)-$damage);
+            $newHeatlth = ($enemy->getHealth()-$damage);
             $this->setHealthDB($enemy->getName(),$newHeatlth);
 
         }
@@ -35,10 +35,12 @@ class Hero extends Commands
 
     function winner($xp)
     {
-      echo "{$this->name} won the battle with {$this->showHealth($this->name)} health and {$this->showStamina($this->name)} stamina left.<br />";
+      echo "{$this->name} won the battle with {$this->getHealth($this->name)} health and {$this->getStamina($this->name)} stamina left.<br />";
       $this->xp = $this->xp + $xp;
       echo "{$this->name} wins {$xp} experience points! Total: {$this->xp} <br />";
+      $this->addXpToHeroDB($this->name,$xp);
       $this->levelUp();
+      $this->setStamina($this->getStamina()+10);
     }
 
     function levelUp()
@@ -46,12 +48,15 @@ class Hero extends Commands
         if($this->xp >= $this->xpCap)
         {
 
-            $this->health = $this->health + 15;
             $this->stamina = $this->stamina + 10;
+            $newHealth = $this->getHealth() + 15;
+            $newStamina = $this->getStamina() + 15;
+            $this->setHealth($newHealth);
+            $this->setStamina($newStamina);
 
                 echo "{$this->name} levelled up!<br />";
-                echo "New stats: {$this->health} health {$this->stamina} stamina.";
-                $this->xp=0;
+                echo "New stats: {$this->getHealth()} health {$this->getStamina()} stamina.";
+                $this->resetXp();
 
         }
     }
@@ -71,24 +76,34 @@ class Hero extends Commands
     public function getHealth()
     {
 
+        $this->health = $this->showHealth($this->name);
         return $this->health;
     }
 
 
     public function setHealth($health)
     {
-        $this->health = $health;
+        $this->health = $this->setHealthDB($this->name,$health);
     }
 
     public function getStamina()
     {
+        $this->stamina = $this->showStamina($this->name);
         return $this->stamina;
     }
-
+    function resetXp()
+    {
+        $this->xp = $this->addXpToHeroDB($this->name,0);
+    }
 
     public function setStamina($stamina)
     {
-        $this->stamina = $stamina;
+        $this->stamina = $this->setStaminaDB($this->name,$stamina);
+    }
+    public function getDamage()
+    {
+        $this->damage = $this->showDamage($this->name);
+        return $this->damage;
     }
 
     public function getName()

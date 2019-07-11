@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../assets/CSS/shopStage.css">
+<head>
+    <style>
+        html {
+            background: url(../assets/images/4eda42fdba662425891986af94365293.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+</head>
+<div class="transbox">
+    <h2>Scavenge! </h2>
+
+    <br /> <p>You finally found the forge.</p><br />
+    Blacksmith - Come! You are the only ones left.<br />
+    Orc - Hello old friend, you always helped in darkest of times.<br />
+    Blacksmith -  A sharper sword, a stronger shield - anything to prolong a friend's life.<br />
+    There is a great horror in the city... A crawling chaos, that must be destroyed!<br />
+    The cost of preparedness is measured, now in gold, later, in blood...<br />
+    But now i won't ask for gold, take what i have left for free.<br />
+
+    Choose wisely, this can be your last choice!<br />
+    The armor is heavy and you can't ride with it!<br />
+    It is up to you to prepare for the final battle!
+</div>
+
+<div class="img-orc">
+    <div class="container">
+        <img src="../assets/images/horse.jpg" class="image">
+        <div class="overlay">
+            <div class="text">A fallen warrior's trusty steed!
+                <br /> It will help you save energy.
+                <br /> Gives bonus stamina.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="img-warrior">
+    <div class="container">
+        <img src="../assets/images/armorNew.jpg" class="image">
+        <div class="overlay">
+            <div class="text">
+                <br /> The Blacksmith's latest creation.
+                <br /> Made from the finest steel.
+                <br /> Gives bonus health.
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="../battles/Shop.php" method="GET">
+    <div class="submit">
+        <input class="search" name="armor" type="submit" value="Take!">
+    </div>
+    <div class="submit_orc">
+        <input class="search" name="horse" type="submit" value="Ride!">
+    </div>
+</form>
+</body>
+</html>

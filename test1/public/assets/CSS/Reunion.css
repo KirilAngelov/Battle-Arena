@@ -3,8 +3,8 @@ body {
     display: grid;
     height: 100%;
     text-align: center;
-    color: white;
-    background: url("../HTML Pages/orc_tunnel.jpg") no-repeat center center fixed;
+    color: black;
+    background: url("../images/Warrior_vs_Orc.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -26,14 +26,14 @@ h1 {
 }
 .center-fit {
     max-width: 130%;
-    max-height: 130vh;
+    max-height: 130%;
     margin: auto;
 }
 .body {
     display: grid;
     height: 100%;
     text-align: center;
-    color: white;
+    color: black;
     z-index: 1;
 }
 
@@ -42,7 +42,7 @@ h1 {
     background-color: #ffffff;
     border: 1px solid black;
     width: 60%;
-    opacity: 0.6;
+    opacity: 0.7;
     filter: alpha(opacity=60);
 
     color:black;

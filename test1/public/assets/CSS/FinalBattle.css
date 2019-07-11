@@ -1,0 +1,57 @@
+
+body {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    color: black;
+    background: url("../images/final_battle.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+h1 {
+    color: black;
+
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.imgbox {
+    display: grid;
+    height: 100%;
+    background-image: none;
+}
+.center-fit {
+    max-width: 130%;
+    max-height: 130%;
+    margin: auto;
+}
+.body {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    color: black;
+    z-index: 1;
+}
+
+.transbox {
+    margin: auto;
+    background-color: #ffffff;
+    border: 1px solid black;
+    width: 45%;
+    opacity: 0.75;
+    filter: alpha(opacity=60);
+
+    color:black;
+}
+mark.red {
+    color:#ff0000;
+    background: none;
+}
+mark.blue {
+    color:#0000A0;
+    background: none;
+}

@@ -1,0 +1,54 @@
+
+.centered {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+body {
+    display: grid;
+    height: 100%;
+    background-image: url("../images/emperor_army2.jpg");
+    text-align: center;
+    color: white;
+}
+h1 {
+    color: black;
+
+}
+.imgbox {
+    display: grid;
+    height: 100%;
+    background-image: none;
+}
+.center-fit {
+    max-width: 130%;
+    max-height: 130%;
+    margin: auto;
+}
+.body {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+.transbox {
+    margin: auto;
+    background-color: #ffffff;
+    border: 1px solid black;
+    width: 50%;
+    opacity: 0.7;
+    filter: alpha(opacity=60);
+    color:black;
+}
+mark.red {
+    color:#ff0000;
+    background: none;
+}
+mark.blue {
+    color:#0000A0;
+    background: none;
+}
