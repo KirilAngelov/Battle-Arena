@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="\test1\public\assets\CSS\HomeStage.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            background: url("../assets/images/Arena.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+    </style>
+</head>
+
+
+    <div class="transbox">
+    <br />
+    <h1>Choose your hero!</h1>
+    <br />
+</div>
+
+<div class="img-orc">
+    <div class="container">
+        <img src="../assets/images/orc_barb.jpg" class="image">
+        <div class="overlay">
+            <div class="text">Orcs are fierce and unstoppable fighters!
+                <br /> They have a larger health pool.</div>
+        </div>
+    </div>
+</div>
+
+<div class="img-warrior">
+    <div class="container">
+        <img src="../assets/images/medieval_warrior.jpg" class="image">
+        <div class="overlay">
+            <div class="text">Warriors are smart and fast fighters!
+                <br /> They have more stamina.</div>
+        </div>
+    </div>
+</div>
+
+<form action="../battles/ArenaBattle.php" method="POST">
+    <div class="submit">
+        <input class="search" name="forPeople" type="submit" value="For the people!">
+    </div>
+    <div class="submit_orc">
+        <input class="search" name="forHorde" type="submit" value="For the horde!">
+    </div>
+
+</form>
+</body>
+</html>

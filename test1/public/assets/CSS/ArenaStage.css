@@ -1,13 +1,8 @@
 
-  * {
-
-      margin: 0;
-      padding: 0;
-  }
 body {
     display: grid;
     height: 100%;
-    background-image: url("Arena.jpg");
+    background-image: url("../images/Arena.jpg");
     text-align: center;
     color: white;
 }
